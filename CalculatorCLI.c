@@ -1,41 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
-void add();
-void addf();
-void addo();
-void adde();
-
-void sub();
-void subf();
-void subo();
-void sube();
-
-void printIni();
-void read();
-void decode();
-void help();
-void run();
-
-int quantOp = 0,
-    i = 0,
-    acumI = 0,
-    inI = 0,
-    ok = 0,
-    ex = 0;
-
-float acumF = 0,
-      inF = 0;
-
-char op[20];
+void add();      // ADD X int arguments
+void addf();     // ADD X float arguments
+void addo();     // ADD X int/float odd arguments
+void adde();     // ADD X int/float even arguments
+void sub();      // SUB X int arguments
+void subf();     // SUB X float arguments
+void subo();     // SUB X int/float odd arguments
+void sube();     // SUB X int/float even arguments
+void read();     // Read instruction
+void decode();   // Decode instruction
+void run();      // Run application
+void help();     // Help printer
+void printIni(); // Print initial markup
+char op[20];     // Input operation
+int quantOp = 0, // Number of arguments
+    i = 0,       // for controller
+    acumI = 0,   // Acumulate int results 
+    inI = 0,     // Input int numbers
+    ok = 0,      // Controller flag
+    ex = 0;      // Rxit flag
+float acumF = 0, // Acumulate float results
+    inF = 0;     // Input float numbers
 
 //-----------------------------------------------------
 
 int main(void)
 {
-  printf("%s", ">>> Type an operation, use --help/-h, or --exit\n");
+  printf("%s", ">>> Type an operation, use --help/-h or --exit\n");
   run();
 
   return 0;
@@ -106,7 +99,9 @@ void decode()
     help();
     printIni();
   }
+
   // -------------------------------------------------------------------
+
   if (!strcmp(op, "sub\n"))
   {
     sub();
@@ -215,7 +210,7 @@ void addo(int f)
         }
         else
         {
-          printf("%s", "Only odd numbers!\n");
+          printf("%s", ">>> Only odd numbers!\n");
           printIni();
         }
       }
@@ -249,7 +244,7 @@ void addo(int f)
         }
         else
         {
-          printf("%s", "Only odd numbers!\n");
+          printf("%s", ">>> Only odd numbers!\n");
           printIni();
         }
       }
@@ -287,7 +282,7 @@ void adde(int f)
         }
         else
         {
-          printf("%s", "Only even numbers!\n");
+          printf("%s", ">>> Only even numbers!\n");
           printIni();
         }
       }
@@ -319,7 +314,7 @@ void adde(int f)
         }
         else
         {
-          printf("%s", "Only even numbers!\n");
+          printf("%s", ">>> Only even numbers!\n");
           printIni();
         }
       }
@@ -403,7 +398,7 @@ void subo(int f)
         }
         else
         {
-          printf("%s", "Only odd numbers!\n");
+          printf("%s", ">>> Only odd numbers!\n");
           printIni();
         }
       }
@@ -437,7 +432,7 @@ void subo(int f)
         }
         else
         {
-          printf("%s", "Only odd numbers!\n");
+          printf("%s", ">>> Only odd numbers!\n");
           printIni();
         }
       }
@@ -477,7 +472,7 @@ void sube(int f)
         }
         else
         {
-          printf("%s", "Only even numbers!\n");
+          printf("%s", ">>> Only even numbers!\n");
           printIni();
         }
       }
@@ -511,7 +506,7 @@ void sube(int f)
         }
         else
         {
-          printf("%s", "Only even numbers!\n");
+          printf("%s", ">>> Only even numbers!\n");
           printIni();
         }
       }
@@ -532,7 +527,6 @@ void printIni()
 //-----------------------------------------------------
 
 void help()
-
 {
   printf("%s\n", "********************** HELP! *********************");
   printf("%s\n", "******************** COMMANDS ********************");
